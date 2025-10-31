@@ -227,6 +227,7 @@ const Join = ({isOpenJoin, onClose}) => {
   //중복 확인 검사 통과 여부
   const [isDuplicated, setIsDuplicated] = useState({
     'memId' : false,
+    'memTell' : false,
     'memBusinessNum' : false
   });
 
@@ -242,7 +243,7 @@ const Join = ({isOpenJoin, onClose}) => {
                        isBusinessValid.memBusinessName)
 
   //모든 중복 확인이 통과했는지 확인
-  const isAllDuplicated = isDuplicated.memId && (joinData.memGrade === 'USER' || isDuplicated.memBusinessNum)
+  const isAllDuplicated = isDuplicated.memId && isDuplicated.memTell && (joinData.memGrade === 'USER' || isDuplicated.memBusinessNum)
 
   //최종 활성화 조건
   const canSubmit = isAllValid && isAllDuplicated;
